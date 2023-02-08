@@ -7,7 +7,7 @@
     <title>Randonnées, ajout</title>
 </head>
 <body>
-    <form action="">
+    <form action="" method="post">
         <input type="text" name="name" placeholder="Nom de la randonnée">
         <select name="difficulty" id="difficulty">
             <option value="très facile">Très facile</option>
@@ -16,10 +16,20 @@
             <option value="difficile">Difficile</option>
             <option value="très difficile">Très difficile</option>
         </select>
-        <input type="number" name="distance">
+        <input type="number" name="duration">
         <!-- Ajoutez un / des champs pour gérer la donnée de type time à insérer via PHP -->
-        .....
+
         <input type="number" name="height_difference">
+        <input type="submit" name="add_rando" value="Ajouter un randonneur">
     </form>
+
+    <a href="./read.php">Allez vers read.php</a>
 </body>
 </html>
+<?php
+require "Classe/DbPDO.php";
+DbPDO::connect();
+
+if (isset($_POST['add_rando'])) {
+    DbPDO::addRando() ;
+}
